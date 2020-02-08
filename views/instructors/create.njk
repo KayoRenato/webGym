@@ -1,0 +1,66 @@
+{% extends "layout.njk" %}
+
+{% block main %}
+
+<form class="card" method="POST" action="/instructors">
+  <section class="avatar" style= "background: url(https://source.unsplash.com/collection/4782235/500x500) no-repeat center center / cover "></section>
+  <section class="details">
+
+    <h3>Novo Instrutor</h3>
+    <div class="item">
+      <div>Avatar</div>
+      <input 
+        type="url"
+        name="avatarURL"
+        placeholder="https://"
+        required="required"
+        oninvalid= "this.setCustomValidity('Insira o endereço do seu Avatar!')"
+        onchange="this.setCustomValidity('')"
+      >
+    </div>
+    <div class="item">
+      <div>Instrutor</div>
+      <input 
+        type="text"
+        name="name"
+        placeholder="Nome Completo"
+        required="required"
+        oninvalid="this.setCustomValidity('Preencha seu nome!')"
+        onchange="this.setCustomValidity('')"
+      >
+    </div>
+    <div class="item">
+      <div>Data de Nascimento</div>
+      <input 
+        type="date" 
+        name="birth"
+        min="1900-01-01"
+        max="2020-01-01"
+        required="required"
+        oninvalid="this.setCustomValidity('Preencha sua Data de Nascimento!')"
+        onchange="this.setCustomValidity('')"
+      >
+    </div>
+    <div class="item">
+      <div>Sexo</div>
+      <div class="sexContainer">
+        <span><input type="radio" name="gender" value="M" checked>Masculino</span>
+        <span><input type="radio" name="gender" value="F">Feminino</span>
+      </div>
+    </div>
+    <div class="item">
+      <div>Área de Atuação</div>
+      <input 
+        type="text" 
+        name="services"
+        placeholder="Separe as áreas por vírgula"
+        required="required"
+        oninvalid="this.setCustomValidity('Insira pelo menos uma Área de Atuação!')"
+        onchange="this.setCustomValidity('')"
+      >
+    </div>
+    <button type="submit">Criar</button>
+  </section>
+</form>
+
+{% endblock %}

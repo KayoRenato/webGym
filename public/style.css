@@ -9,11 +9,11 @@
 }
 
 :root{
-  --color-first:#7159c7;
+  --color-first:#16DB93;
   --color-second: #ffffff;
   --color-third:#888888;
-  --color-fourth:#;
-  --color-fifth:#;
+  --color-fourth:rgba(73, 71, 71, 1);
+  --color-fifth:#E56399;
 
 }
 
@@ -33,6 +33,8 @@ header{
   padding: 32px;
   text-align: center;
   box-sizing: border-box;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 header a{
@@ -43,7 +45,7 @@ header a{
 }
 
 header a.active {
-  color: var(--color-first);
+  color: var(--color-fifth);
   font-weight: bold;
 }
 
@@ -51,7 +53,7 @@ header a::after{
   content: "";
   width: 0;
   height: 2px;
-  background-color: var(--color-first);
+  background-color: var(--color-fifth);
   position: absolute;
   left: 0;
   bottom: 0;
@@ -60,4 +62,123 @@ header a::after{
 header a:hover::after{
   width: 100%;
   transition: width 400ms ease-in-out;
+}
+
+/* INDEX - INSTRUCTORS */
+
+.card{
+  background-color: var(--color-second);
+  width: 800px;
+  min-height: 400px;
+  margin: 45px auto;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+
+  box-shadow: 0px 2px 6px 5px rgba(0, 0, 0, .2);
+
+  animation: up 1000ms ease-in-out;
+
+}
+
+@keyframes up {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* DETAILS CARD */
+
+.details{
+  padding: 32px;
+}
+
+.details h3{
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 18px;
+  color: var(--color-fifth);
+}
+
+.details .item{
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
+  padding: 20px 0;
+}
+.details .item:last-child{
+  border-bottom:none;
+}
+
+.details .item div:nth-child(1){
+  color: var(--color-third);
+  line-height: 24px;
+  letter-spacing: .7px;
+}
+
+.details .item div:nth-child(2){
+  color: var(--color-fourth);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.details .item span,
+button{
+  background-color: var(--color-fifth);
+  padding: 8px 16px;
+  border-radius: 16px;
+  display: inline-block;
+  margin: 0 2px ;
+  
+  color: var(--color-second);
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  
+}
+
+.details .item span:hover,
+button:hover{
+  background-color: var(--color-first);
+  color: var(--color-second);
+  cursor: pointer;
+  transition: ease-in-out 300ms;
+}
+
+/* FORM */
+
+
+input{
+  width: 100%;
+  padding: 8px 0;
+  border: none;
+  outline:none;
+
+  color: var(--color-fourth);
+  font-weight: bold;
+}
+.sexContainer{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.details .item span{
+  text-align: center;
+  display: inline-block;
+}
+
+input[type="radio"]{
+  width: initial;
+  margin-right: 4px;
+}
+
+input::placeholder{
+  font-size: 16px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  margin-top: 32px;
 }
