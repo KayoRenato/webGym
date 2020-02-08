@@ -22,6 +22,10 @@ a {
  color: var(--color-third);
 }
 
+a:hover {
+ cursor: pointer;
+}
+
 
 body{
   background-color: var(--color-first);
@@ -44,6 +48,7 @@ header a{
   position: relative;
 }
 
+
 header a.active {
   color: var(--color-fifth);
   font-weight: bold;
@@ -63,6 +68,7 @@ header a:hover::after{
   width: 100%;
   transition: width 400ms ease-in-out;
 }
+
 
 /* INDEX - INSTRUCTORS */
 
