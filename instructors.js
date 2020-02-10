@@ -2,6 +2,7 @@ const fs = require('fs')
 const data = require("./data/dataCreateInstructors.json")
 const { age, date } = require('./functions/date')
 const { removeSpace } = require('./functions/removeSpace')
+const Intl = require('Intl')
 
 // TABLE(GET) - Mostrar dados dos instrutores cadastrados
 exports.table = (req, res) => {
@@ -20,7 +21,7 @@ exports.show = (req,res) => {
     ...foundInstructor,
     birth: age(foundInstructor.birth),
     gender: (foundInstructor.gender == 'M'? "Masculino":"Feminino"),
-    createdAt: Intl.DateTimeFormat('pt-BR').format(foundInstructor.createdAt)
+    createdAt: new Intl.DateTimeFormat('pt-BR',{day: 'numeric', month: 'long', year: 'numeric'}).format(foundInstructor.createdAt)
   }
 
 
@@ -160,3 +161,5 @@ exports.delete = (req, res) => {
     }
   )
 } 
+
+
