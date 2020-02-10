@@ -1,0 +1,58 @@
+{
+  "members": [],
+  "instructors": [
+    {
+      "id": 1,
+      "avatarURL": "https://images.unsplash.com/photo-1544133782-b62779394064?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+      "name": "Thiago Carlos",
+      "birth": 562464000000,
+      "gender": "M",
+      "services": [
+        "CrossFit",
+        "Musculação",
+        "Funcional",
+        "Natação"
+      ],
+      "createdAt": 1581283636951
+    },
+    {
+      "id": 2,
+      "avatarURL": "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80",
+      "name": "Kayo Renato",
+      "birth": 563328000000,
+      "gender": "M",
+      "services": [
+        "CrossFit",
+        "Musculação",
+        "Funcional"
+      ],
+      "createdAt": 1581284420715
+    },
+    {
+      "id": 3,
+      "avatarURL": "https://images.unsplash.com/photo-1548690312-e3b507d8c110?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+      "name": "Erika Nayara",
+      "birth": 983577600000,
+      "gender": "F",
+      "services": [
+        "Pilates",
+        "Funcional",
+        "Limpeza de Pele"
+      ],
+      "createdAt": 1581284445076
+    },
+    {
+      "id": 4,
+      "avatarURL": "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80",
+      "name": "Phoenix Ilusion",
+      "birth": 944956800000,
+      "gender": "M",
+      "services": [
+        "Natação",
+        "Musculação",
+        "Funcional"
+      ],
+      "createdAt": 1581361826112
+    }
+  ]
+}

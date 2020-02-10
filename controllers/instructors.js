@@ -1,14 +1,22 @@
 const fs = require('fs')
-const data = require("./data/dataCreateInstructors.json")
-const { age, date } = require('./functions/date')
-const { removeSpace } = require('./functions/removeSpace')
 const Intl = require('Intl')
+const data = require("../data/dataCreate.json")
+const { age, date } = require('../functions/date')
+const { removeSpace } = require('../functions/removeSpace')
 
+
+// REDIRECT(GET) - 
+exports.redirect = (req, res) => {
+  return res.redirect("/instructors")
+}
+// CREATE (POST) - 
+exports.create = (req, res) => {
+  return res.render("instructors/create")
+}
 // TABLE(GET) - Mostrar dados dos instrutores cadastrados
 exports.table = (req, res) => {
   return res.render("instructors/index", {instructors: data.instructors})
 }
-
 // SHOW(GET) - Mostrar dados com referência no parametros informardo no parametro http (req.params)
 exports.show = (req,res) => {
   const { id } = req.params
@@ -27,18 +35,8 @@ exports.show = (req,res) => {
 
   return res.render("instructors/show", { instructor })
 }
-
-// SAVE(POST) - Salvar um novo dado do req.body, vindos do form da rota routes.get('/instructors/create', callback - render page create), no arquivo dataCreateInstructors.JS
+// SAVE(POST) - Salvar um novo dado do req.body, vindos do form da rota routes.get('/instructors/create', callback - render page create), no arquivo dataCreate.JS
 exports.save = (req, res) => {
-  
-  // Validação de dados pós submit - Pessímo para UX
-  //const keys =  Object.keys(req.body)
-  // 
-  // for(key of keys){
-  //   if(req.body[key] == ''){
-  //     return res.send(`Preencha todos os campos! ${key}`)
-  //   }
-  // }
 
   let { avatarURL, name, birth, gender, services } = req.body
 
@@ -58,7 +56,7 @@ exports.save = (req, res) => {
   })
 
   fs.writeFile(
-    "./data/dataCreateInstructors.json",
+    "./data/dataCreate.json",
      JSON.stringify(data,null, 2),
     (err) => {
       if(err) return res.send('White File Error!')
@@ -68,7 +66,6 @@ exports.save = (req, res) => {
   )
 
 }
-
 // EDIT(GET) - Mostrar dados com referência no parametros informardo no parametro http (req.params) em uma pagina editável
 exports.edit = (req, res) => {
 
@@ -85,7 +82,6 @@ exports.edit = (req, res) => {
  
   return res.render("instructors/edit", { instructor })
 }
-
 // UPDATE(PUT) - Atualizar os dados 
 exports.update = (req,res) => {
   let { id, birth, services } = req.body
@@ -123,7 +119,7 @@ exports.update = (req,res) => {
    data.instructors[index] = instructor
 
    fs.writeFile(
-    "./data/dataCreateInstructors.json",
+    "./data/dataCreate.json",
      JSON.stringify(data,null, 2),
     (err) => {
       if(err) return res.send('White File Error!')
@@ -132,7 +128,6 @@ exports.update = (req,res) => {
     }
   )
 }
-
 // DELETE(DELETE) - Apagar o dado informado
 exports.delete = (req, res) => {
   const { id } = req.body
@@ -152,7 +147,7 @@ exports.delete = (req, res) => {
   })
 
   fs.writeFile(
-    "./data/dataCreateInstructors.json",
+    "./data/dataCreate.json",
      JSON.stringify(data,null, 2),
     (err) => {
       if(err) return res.send('White File Error!')
