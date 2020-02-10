@@ -2,35 +2,36 @@
 
 {% block main %}
 
-<div class="card">
-<section class="avatar" style= "background: url(https://source.unsplash.com/collection/4782235/500x500) no-repeat center center / cover "></section>
-<section class="details">
-
-  <h3>Detalhes</h3>
-  <div class="item">
-    <div>Instrutor</div>
-    <div>Kayo Renato</div>
-  </div>
-  <div class="item">
-    <div>Idade</div>
-    <div>32</div>
-  </div>
-  <div class="item">
-    <div>Sexo</div>
-    <div>Masculino</div>
-  </div>
-  <div class="item">
-    <div>Acompanhamento</div>
-    <span>Musculação</span>
-    <span>Crossfit</span>
-    <span>Natação</span>
-  </div>
-  <div class="item">
-    <div>Desde</div>
-    <div>12-12-2019</div>
-  </div>
-
-</section>
+<div class="card table-container">
+  <table>
+    <thead>
+      {# Linhas no Head #}
+      <tr>
+        {# Colunas no Head #}
+        <th>Instrutor</th>
+        <th>Serviçoes</th>
+        <th>Ação</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in instructors %}
+       {# Linhas no Body #}
+        <tr>
+        {# Colunas no Body #}
+          <td>
+            <span style="background-image: url({{item.avatarURL}})"></span>
+            <div class="nameTable">{{item.name}}</div>
+          </td>
+          <td>
+          {% for item in item.services %}
+            <a class="servicesTable" href="">{{item}}</a>
+          {% endfor %}
+          </td>
+          <td><a class='buttonTable' href="/instructors/{{item.id}}" target='-blank'>Ver</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
 
 {% endblock %}
