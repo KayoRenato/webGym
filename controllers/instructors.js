@@ -9,31 +9,13 @@ const { removeSpace } = require('../functions/removeSpace')
 exports.redirect = (req, res) => {
   return res.redirect("/instructors")
 }
-// CREATE (POST) - 
-exports.create = (req, res) => {
-  return res.render("instructors/create")
-}
 // TABLE(GET) - Mostrar dados dos instrutores cadastrados
 exports.table = (req, res) => {
   return res.render("instructors/index", {instructors: data.instructors})
 }
-// SHOW(GET) - Mostrar dados com referência no parametros informardo no parametro http (req.params)
-exports.show = (req,res) => {
-  const { id } = req.params
-
-  const foundInstructor = data.instructors.find((instructor) => instructor.id == id)
-
-  if(!foundInstructor) return res.send("Instructor not Found!")
-  
-  const instructor = {
-    ...foundInstructor,
-    birth: age(foundInstructor.birth),
-    gender: (foundInstructor.gender == 'M'? "Masculino":"Feminino"),
-    createdAt: new Intl.DateTimeFormat('pt-BR',{day: 'numeric', month: 'long', year: 'numeric'}).format(foundInstructor.createdAt)
-  }
-
-
-  return res.render("instructors/show", { instructor })
+// CREATE (POST) - Mostrar page de criação do Instrutor
+exports.create = (req, res) => {
+  return res.render("instructors/create")
 }
 // SAVE(POST) - Salvar um novo dado do req.body, vindos do form da rota routes.get('/instructors/create', callback - render page create), no arquivo dataCreate.JS
 exports.save = (req, res) => {
@@ -66,6 +48,24 @@ exports.save = (req, res) => {
   )
 
 }
+// SHOW(GET) - Mostrar dados com referência no parametros informardo no parametro http (req.params)
+exports.show = (req,res) => {
+  const { id } = req.params
+
+  const foundInstructor = data.instructors.find((instructor) => instructor.id == id)
+
+  if(!foundInstructor) return res.send("Instructor not Found!")
+  
+  const instructor = {
+    ...foundInstructor,
+    birth: age(foundInstructor.birth),
+    gender: (foundInstructor.gender == 'M'? "Masculino":"Feminino"),
+    createdAt: new Intl.DateTimeFormat('pt-BR',{day: 'numeric', month: 'long', year: 'numeric'}).format(foundInstructor.createdAt)
+  }
+
+
+  return res.render("instructors/show", { instructor })
+}
 // EDIT(GET) - Mostrar dados com referência no parametros informardo no parametro http (req.params) em uma pagina editável
 exports.edit = (req, res) => {
 
@@ -77,7 +77,7 @@ exports.edit = (req, res) => {
   
   const instructor = {
     ...foundInstructor,
-    birth: date(foundInstructor.birth),
+    birth: date(foundInstructor.birth).iso
   }
  
   return res.render("instructors/edit", { instructor })
@@ -86,8 +86,6 @@ exports.edit = (req, res) => {
 exports.update = (req,res) => {
   let { id, birth, services } = req.body
 
-  console.log(req.body)
-  console.log(typeof birth)
   let index = 0
 
   const foundInstructor = data.instructors.find((instructor,foundIndex) => {
@@ -98,11 +96,8 @@ exports.update = (req,res) => {
 
   })
 
-  
   birth = Date.parse(birth) //transforma no formato timestamp
   services = removeSpace(services)
-  
-  console.log(typeof birth, birth)
 
   const instructor = {
     ...foundInstructor,
@@ -112,8 +107,6 @@ exports.update = (req,res) => {
     id: Number(req.body.id)
 
    }
-
-   console.log(instructor)
 
   //  diferença entre PUT AND POST - ATUALIZAÇÃO DE DADOS
    data.instructors[index] = instructor

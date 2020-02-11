@@ -9,7 +9,10 @@
       <tr>
         {# Colunas no Head #}
         <th>Aluno</th>
+        <th>Email</th>
         <th>Serviços Desejados</th>
+        <th>Altura (cm)</th>
+        <th>Peso (kg)</th>
         <th>Ação</th>
       </tr>
     </thead>
@@ -23,15 +26,26 @@
             <div class="nameTable">{{item.name}}</div>
           </td>
           <td>
+            <a class="emailTable" href="mailto:{{item.email}}">{{item.email}}</a>
+          </td>
+          <td>
           {% for item in item.services %}
             <a class="servicesTable" href="">{{item}}</a>
           {% endfor %}
+          </td>
+          <td>
+            <div class="heightTable">{{item.height}}</div>
+          </td>
+          <td>
+            <div class="weightTable">{{item.weight}}</div>
           </td>
           <td><a class='buttonTable' href="/members/{{item.id}}" target='-blank'>Ver</a></td>
         </tr>
       {% endfor %}
     </tbody>
   </table>
+  <a class="create" href="/members/create">Novo</a>
+
 </div>
 
 {% endblock %}

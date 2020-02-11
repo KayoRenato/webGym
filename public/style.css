@@ -160,7 +160,7 @@ button:hover,
 /* FORM */
 
 
-input{
+input, select{
   width: 100%;
   padding: 8px 0;
   border: none;
@@ -286,7 +286,8 @@ tbody tr td:first-child span:hover{
 
 }
 
-.nameTable{
+.nameTable,
+.create{
   background-color: var(--color-first);
   padding: 4px 6px;
   border-radius: 8px;
@@ -298,4 +299,33 @@ tbody tr td:first-child span:hover{
   text-transform: uppercase;
   font-size: 12px;
   font-weight: bold;
+}
+
+
+.create{
+  padding: 8px 32px;
+  margin-top: 48px;
+  font-size: 16px;
+}
+
+.create:hover{
+  background-color: var(--color-fifth);
+  transition: ease-in-out 300ms;
+}
+
+.emailTable,
+.heightTable,
+.weightTable{
+  font-weight: bold;
+  color: var(--color-third);
+}
+
+.heightTable,
+.weightTable{
+  text-align: center;
+}
+
+.emailTable:hover{
+  color: var(--color-fifth);
+  opacity: .8;
 }

@@ -2,47 +2,43 @@
   "members": [
     {
       "id": 1,
-      "avatarURL": "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80",
-      "name": "Aluno 01",
-      "birth": 981849600000,
+      "avatarURL": "https://images.unsplash.com/photo-1544133782-b62779394064?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+      "name": "Jose ",
+      "email": "jose@gmail.com",
+      "birth": 944092800000,
       "gender": "M",
+      "blood": "A+",
+      "height": "122",
+      "weight": "122",
       "services": [
         "CrossFit",
-        "Musculação",
-        "Funcional"
+        "Musculação"
       ],
-      "createdAt": 1581366784748
+      "createdAt": 1581382646787
     },
     {
       "id": 2,
-      "avatarURL": "https://images.unsplash.com/photo-1544133782-b62779394064?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
-      "name": "Aluno 02",
-      "birth": 692496000000,
-      "gender": "F",
+      "avatarURL": "https://images.unsplash.com/photo-1532384555668-bc0c32a17ffd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "name": "Bryan Ruam de Marques",
+      "email": "Bryan@gmail.com",
+      "birth": 658022400000,
+      "gender": "M",
+      "blood": "AB+",
+      "height": "180",
+      "weight": "70",
       "services": [
-        "Pilates",
-        "Funcional"
+        "Box",
+        "Crossfit",
+        "Musculação",
+        "Funcional",
+        "Natação"
       ],
-      "createdAt": 1581366829522
+      "createdAt": 1581386968513
     }
   ],
   "instructors": [
     {
       "id": 1,
-      "avatarURL": "https://images.unsplash.com/photo-1544133782-b62779394064?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
-      "name": "Thiago Carlos",
-      "birth": 562464000000,
-      "gender": "M",
-      "services": [
-        "CrossFit",
-        "Musculação",
-        "Funcional",
-        "Natação"
-      ],
-      "createdAt": 1581283636951
-    },
-    {
-      "id": 2,
       "avatarURL": "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80",
       "name": "Kayo Renato",
       "birth": 563328000000,
@@ -55,7 +51,7 @@
       "createdAt": 1581284420715
     },
     {
-      "id": 3,
+      "id": 2,
       "avatarURL": "https://images.unsplash.com/photo-1548690312-e3b507d8c110?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
       "name": "Erika Nayara",
       "birth": 983577600000,

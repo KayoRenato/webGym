@@ -24,6 +24,17 @@
       >
     </div>
     <div class="item">
+      <div>Email</div>
+      <input 
+        type="email" 
+        name="email"
+        value="{{member.email}}"
+        required="required"
+        oninvalid="this.setCustomValidity('Informe seu email!')"
+        onchange="this.setCustomValidity('')"
+      >
+    </div>
+    <div class="item">
       <div>Data de Nascimento</div>
       <input 
         type="date" 
@@ -63,14 +74,73 @@
       </div>
     </div>
     <div class="item">
-      <div>Área de Atuação</div>
+      <div>Tipo Sanguíneo</div>
+      <div>
+        <select name="blood">
+          <option value="A+" {% if member.blood == "A+" %} selected {% endif %} >
+            A+
+          </option>
+          <option value="A-" {% if member.blood == "A-" %} selected {% endif %} >
+            A-
+          </option>
+          <option value="B+" {% if member.blood == "B+" %} selected {% endif %} >
+            B+
+          </option>
+          <option value="B-" {% if member.blood == "B-" %} selected {% endif %} >
+            B-
+          </option>
+          <option value="AB-" {% if member.blood == "AB-" %} selected {% endif %} >
+            AB-
+          </option>
+          <option value="AB+" {% if member.blood == "AB+" %} selected {% endif %} >
+            AB+
+          </option>
+          <option value="O+" {% if member.blood == "O+" %} selected {% endif %} >
+            O+
+          </option>
+          <option value="O-" {% if member.blood == "O-" %} selected {% endif %} >
+            O-
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="item">
+      <div>Altura (cm)</div>
+      <div>
+        <input 
+          type="number" 
+          name="height" 
+          min="0"
+          value="{{member.height}}"
+          required="required"
+          oninvalid="this.setCustomValidity('Informe sua Altura!')"
+          onchange="this.setCustomValidity('')"
+        >
+      </div>
+    </div>
+    <div class="item">
+      <div>Peso (kg)</div>
+      <div>
+        <input 
+          type="number" 
+          name="weight"
+          min="0"
+          value="{{member.weight}}"
+          required="required"
+          oninvalid="this.setCustomValidity('Informe seu Peso!')"
+          onchange="this.setCustomValidity('')"
+        >
+      </div>
+    </div>
+    <div class="item">
+      <div>Atividades Interessadas</div>
       <input 
         type="text" 
         name="services"
-        placeholder="Separe as áreas por vírgula"
+        placeholder="Separe as atividades por vírgula"
         value="{{member.services}}"
         required="required"
-        oninvalid="this.setCustomValidity('Insira pelo menos uma Área de Atuação!')"
+        oninvalid="this.setCustomValidity('Insira pelo menos uma Atividade!')"
         onchange="this.setCustomValidity('')"
       >
     </div>
