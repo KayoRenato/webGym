@@ -1,5 +1,5 @@
 module.exports = {
-  removeSpace: function(string){
+  removeSpace(string){
     return string.split(',').map(item => item.trim())
   }
   // ,

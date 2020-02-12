@@ -1,6 +1,6 @@
 module.exports = {
   
-  age: function(timestamp){
+  age(timestamp){
 
     const today = new Date()
     const birthDate = new Date(timestamp)
@@ -15,7 +15,7 @@ module.exports = {
     
     return age
   },
-  date: function(timestamp){
+  date(timestamp){
     const date = new Date(timestamp)
 
     day = `0${date.getUTCDate()}`.slice(-2)
