@@ -3,15 +3,15 @@ const { removeSpace } = require('../lib/removeSpace')
 const db = require('../../config/db')
 
 module.exports = {
-  all(callback){
+  all(callback){ 
     db.query(
     `
     SELECT * FROM instructors
     `
     , (err, results)=>{
-      if(err) return res.send("Database Error!")
+        if(err) throw   `Database Error! ${err}`
 
-      callback(results.rows)
+        callback(results.rows)
     })
   },
   save(data, callback){
@@ -37,7 +37,7 @@ module.exports = {
     ]
 
     db.query(query, values, (err, results) =>{
-      if(err) return res.send("Database Error!")
+      if(err) throw   `Database Error! ${err}`
 
       callback(results.rows[0])
     })
@@ -49,7 +49,8 @@ module.exports = {
       `
       , [id]
       , function(err, results){
-          if(err) return res.send("Database Error!")
+          if(err) throw   `Database Error! ${err}`
+
           callback(results.rows[0])
         }
     )
@@ -76,10 +77,23 @@ module.exports = {
     ]
 
     db.query(query, values, function(err, results){
-      if(err) return res.send("Database Error!")
+      if(err) throw   `Database Error! ${err}`
 
       callback()
     })
 
+  },
+  delete(id, callback){
+    db.query(
+    `
+    DELETE FROM instructors WHERE id = $1
+    `,
+    [id],
+    function(err, results){
+      if(err) throw  `Database Error! ${err}`
+
+      return callback()
+    })
+
   }
-}
+} 
