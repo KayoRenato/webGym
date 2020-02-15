@@ -3,6 +3,20 @@
 {% block main %}
 
 <div class="card table-container">
+
+  <div class="header">
+    <a class="buttonTable" href="/instructors/create">Novo</a>
+    <form action="/instructors" method="GET">
+      <input 
+        type="text"
+        name="filter"
+        placeholder="Instrutor ou Atividade"
+        value="{{filter}}"
+      >
+      <button type="submit">Pesquisar</button>
+    </form>
+  </div>
+
   <table>
     <thead>
       {# Linhas no Head #}
@@ -10,6 +24,7 @@
         {# Colunas no Head #}
         <th>Instrutor</th>
         <th>Serviços Prestados</th>
+        <th>Total de Alunos</th>
         <th>Ação</th>
       </tr>
     </thead>
@@ -27,13 +42,12 @@
             <a class="servicesTable" href="">{{item}}</a>
           {% endfor %}
           </td>
-          <td><a class='buttonTable' href="/instructors/{{item.id}}" target='_blank'>Ver</a></td>
+          <td class="total_members">{{item.total_members}}</td>
+          <td><a class='buttonTable' href="/instructors/{{item.id}}">Ver</a></td>
         </tr>
       {% endfor %}
     </tbody>
   </table>
-  <a class="create" href="/instructors/create">Novo</a>
-
 </div>
 
 {% endblock %}

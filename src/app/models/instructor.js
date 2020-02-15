@@ -4,9 +4,14 @@ const db = require('../../config/db')
 
 module.exports = {
   all(callback){ 
-    db.query(
+    
+   db.query(
     `
-    SELECT * FROM instructors
+    SELECT instructors.*, count(members) AS total_members
+    FROM instructors
+    LEFT JOIN members ON (members.instructor_id = instructors.id)
+    GROUP BY instructors.id
+    ORDER BY total_members DESC
     `
     , (err, results)=>{
         if(err) throw   `Database Error! ${err}`
@@ -95,5 +100,54 @@ module.exports = {
       return callback()
     })
 
-  }
+  },
+  findby(filter, callback){
+
+    // OR ANY(instructors.services) ILIKE '%"${filter}"%'
+
+    db.query(`
+      SELECT instructors.*, count(members) AS total_members
+      FROM instructors
+      LEFT JOIN members ON (members.instructor_id = instructors.id)
+      WHERE instructors.name ILIKE '%${filter}%'
+      OR '${filter}' ILIKE ANY(instructors.services) 
+      GROUP BY instructors.id
+      ORDER BY total_members DESC
+      `
+      , (err, results)=>{
+          if(err) throw   `Database Error! ${err}`
+  
+          callback(results.rows)
+      })
+  },
+  paginate(params){
+    const {filter, limit, offset, callback} = params
+    
+    let query = `
+    SELECT instructors.*
+    FROM instructors
+    LEFT JOIN members ON (instructors.id = members.instructor_id)
+    `
+
+    if(filter){
+      query = `
+      ${query} 
+      WHERE instructors.name ILIKE '%${filter}%'
+      OR '${filter}' ILIKE ANY(instructors.services) 
+      `
+    }
+
+    query =`
+    ${query} 
+    GROUP BY instructors.id LIMIT $1 OFFSET $2
+    `
+
+    db.query(query, [limit, offset], function(err, results){
+      if(err) throw `Database Error! ${err}`
+
+      callback(results.rows)
+    })
+
+
+  }               
 } 

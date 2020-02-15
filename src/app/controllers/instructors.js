@@ -1,6 +1,5 @@
 const Intl = require('Intl')
 const { age, date } = require('../lib/date')
-const { removeSpace } = require('../lib/removeSpace')
 
 const Instructor = require('../models/instructor')
 
@@ -12,25 +11,45 @@ module.exports = {
   // TABLE(GET) - Mostrar dados dos instrutores cadastrados
   table(req, res) {
 
-    Instructor.all(function(instructors){
-      return res.render("instructors/index", { instructors })
-    })
+    let { filter, page, limit } = req.query
 
+    page = page || 1
+    limit = limit || 2
+    let offset = limit * (page - 1)
+
+    const params = {
+      filter,
+      limit,
+      page,
+      offset,
+      callback(instructors){
+        return res.render("instructors/index", { instructors, filter })
+
+      }
+    }
+
+    Instructor.paginate(params)
+
+    // if(filter){
+    //   Instructor.findby(filter, function(instructors){
+    //     return res.render("instructors/index", { instructors, filter })
+    //   })
+
+    // } else {
+    //   Instructor.all(function(instructors){
+    //     return res.render("instructors/index", { instructors })
+    //   })
+    // }
   },
   // CREATE (POST) - Mostrar page de criação do Instrutor
   create(req, res) {
-
-
    return res.render("instructors/create")
   },
   // SAVE(POST) - Salvar um novo dado do req.body, vindos do form da rota routes.get('/instructors/create', callback - render page create), no arquivo dataCreate.JS
-  save(req, res) {
-    
+  save(req, res) { 
     Instructor.save(req.body, function(instructor){
-      
       return res.redirect('/instructors')
     })
-    
   },
   // SHOW(GET) - Mostrar dados com referência no parametros informardo no parametro http (req.params)
   show(req, res) {
@@ -64,7 +83,7 @@ module.exports = {
     Instructor.delete(req.body.id, function(){
       return res.redirect('/instructors')
     })
-  },
+  }
 }
 
 

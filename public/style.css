@@ -74,7 +74,7 @@ header a:hover::after{
 
 .card{
   background-color: var(--color-second);
-  width: 800px;
+  max-width: 900px;
   min-height: 400px;
   margin: 45px auto;
   display: grid;
@@ -241,6 +241,10 @@ tbody tr:last-child td {
   border-bottom: none;
 }
 
+tbody tr td:last-child {
+text-align: center;
+}
+
 .servicesTable{
   background-color: var(--color-fifth);
   padding: 4px 6px;
@@ -328,4 +332,57 @@ tbody tr td:first-child span:hover{
 .emailTable:hover{
   color: var(--color-fifth);
   opacity: .8;
+}
+
+.total_members{
+  text-align: center;
+  font-weight: bold;
+  color: var(--color-third);
+  font-size: 24px;
+
+}
+
+.card.table-container .header{
+  display: grid;
+  align-items:center;
+  grid-template-columns: 1fr 1fr;
+}
+
+.header{
+  margin-bottom: 32px;
+}
+
+.header form{
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  align-items: center;
+  grid-gap: 4px;
+}
+
+.header form a, .header form button{
+  align-items: center;
+  border: none;
+  margin: 4px 2px;
+  box-sizing: border-box;
+}
+
+.header .buttonTable{
+  width: 120px;
+  text-align: center;
+}
+
+.header form input{
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 16px;
+  box-sizing: border-box;
+  padding-right: 8px;
+  padding-left: 8px;
+  height: 33px;
+
+}
+
+.header form input::-webkit-input-placeholder{
+  color: rgba(0, 0, 0, .2);
+  font-size: 14px;
+  text-align: right;
 }

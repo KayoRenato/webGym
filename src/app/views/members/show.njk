@@ -3,13 +3,13 @@
 {% block main %}
 
 <div class="card">
-  <section class="avatar" style= "background: url({{member.avatarURL}}) no-repeat center center / cover "></section>
+  <section class="avatar" style= "background: url({{member.avatar_url}}) no-repeat center center / cover "></section>
   <section class="details">
 
   <h3>Detalhes</h3>
 
   <div class="item">
-    <div>Instrutor</div>
+    <div>Aluno</div>
     <div>{{member.name}}</div>
   </div>
 
@@ -20,18 +20,17 @@
 
   <div class="item">
     <div>Idade</div>
-    <div>{{member.birth}}</div>
+    <div>{{member.age}}</div>
   </div>
 
   <div class="item">
     <div>Data de Ativersário</div>
-    <div>{{member.birthDay}}</div>
+    <div>{{member.birth}}</div>
   </div>
 
   <div class="item">
     <div>Sexo</div>
-    {# {{"Masculino" if member.gender == 'M' else "Feminino"}} #}
-    <div>{{member.gender}}</div>
+    <div>{{"Masculino" if member.gender == 'M' else "Feminino"}}</div>
   </div>
 
   <div class="item">
@@ -57,9 +56,15 @@
       {% endfor %}
     </div>
   </div>
+
+  <div class="item">
+    <div>Aluno de</div>
+    <div>{{member.instructor_name}}</div>
+  </div>
+
   <div class="item">
     <div>Desde</div>
-    <div>{{member.createdAt}}</div>
+    <div>{{member.create_at}}</div>
   </div>
   <a href="/members/{{member.id}}/edit" class="button">Editar</a>
 
