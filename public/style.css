@@ -386,3 +386,39 @@ tbody tr td:first-child span:hover{
   font-size: 14px;
   text-align: right;
 }
+
+/* PAGINATE */
+
+.table-container {
+  display: grid;
+  grid-template: 60px 1fr 20px / 1fr;
+}
+
+.table-container .header{
+  margin: 0;
+  align-self: start;
+
+}
+
+.table-container .pagination{
+  margin: 0;
+  justify-self: center;
+  align-self: end;
+
+}
+
+.pagination a,
+.pagination span{
+  color: var(--color-third);
+  opacity: .8;
+  padding: 0px 5px;
+  font-weight: bold;
+}
+
+.pagination a:hover{
+  border: 2px solid var(--color-fifth);
+  border-radius: 25%;
+  color: var(--color-fifth);
+  transition: ease-in-out 300ms;
+
+}

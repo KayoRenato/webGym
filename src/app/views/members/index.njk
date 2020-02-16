@@ -3,6 +3,20 @@
 {% block main %}
 
 <div class="card table-container">
+<div class="header">
+    <a class="buttonTable" href="/members/create">Novo</a>
+    
+    <form action="/members" method="GET">
+      <input 
+        type="text"
+        name="filter"
+        placeholder="Aluno"
+        value="{{filter}}"
+      >
+      <button type="submit">Pesquisar</button>
+    </form>
+  </div>
+
   <table>
     <thead>
       {# Linhas no Head #}
@@ -44,8 +58,12 @@
       {% endfor %}
     </tbody>
   </table>
-  <a class="create" href="/members/create">Novo</a>
-
+<div 
+    class="pagination" 
+    data-page = {{pagination.page}} 
+    data-total = {{pagination.total}}
+    data-filter = {{filter}}
+  ></div>
 </div>
 
 {% endblock %}

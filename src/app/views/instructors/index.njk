@@ -10,7 +10,7 @@
       <input 
         type="text"
         name="filter"
-        placeholder="Instrutor ou Atividade"
+        placeholder="Instrutor"
         value="{{filter}}"
       >
       <button type="submit">Pesquisar</button>
@@ -48,6 +48,13 @@
       {% endfor %}
     </tbody>
   </table>
+
+  <div 
+    class="pagination" 
+    data-page = {{pagination.page}} 
+    data-total = {{pagination.total}}
+    data-filter = {{filter}}
+  ></div>
 </div>
 
 {% endblock %}
