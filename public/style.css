@@ -412,7 +412,6 @@ tbody tr td:first-child span:hover{
   color: var(--color-third);
   opacity: .8;
   padding: 0px 5px;
-  font-weight: bold;
 }
 
 .pagination a:hover{
@@ -421,4 +420,9 @@ tbody tr td:first-child span:hover{
   color: var(--color-fifth);
   transition: ease-in-out 300ms;
 
+}
+
+.pagination a.active {
+  color: var(--color-fifth);
+  font-weight: bold;
 }

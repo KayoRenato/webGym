@@ -1,6 +1,7 @@
 const currentPage = location.pathname
 const menuItems = document.querySelectorAll('header a')
 
+
 for(item of menuItems){
   if(currentPage.includes(item.getAttribute("href"))){
     item.classList.add('active')
@@ -66,8 +67,14 @@ function createPagination(pagination){
 const pagination = document.querySelector('.pagination')
 
 if(pagination){
-  createPagination(pagination)
   
+  createPagination(pagination)
+  const pageOfPages = document.querySelectorAll('.pagination a')
+  const pgCurrent = pagination.dataset.page
+
+  for(let page of pageOfPages){
+    if(pgCurrent == page.textContent){
+      page.classList.add('active')
+    }
+  }
 }
-
-
